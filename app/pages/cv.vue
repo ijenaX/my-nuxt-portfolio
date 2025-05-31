@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
 interface TimelineItem {
   year: number;
   type: string;
@@ -73,12 +75,12 @@ const items: TimelineItem[] = [
   },
 ];
 
-const tabs = ['Projekte', 'Ausbildung', 'Zertifikate'] as const;
-const activeTab = ref<(typeof tabs)[number]>('Projekte');
+const tabs = ['Berufserfahrung', 'Ausbildung', 'Zertifikate'] as const;
+const activeTab = ref<(typeof tabs)[number]>('Berufserfahrung');
 
 const filteredItems = computed(() => {
   switch (activeTab.value) {
-    case 'Projekte':
+    case 'Berufserfahrung':
       return items.filter((i) => i.type === 'professional');
     case 'Ausbildung':
       return items.filter((i) => i.type === 'education');
@@ -92,6 +94,8 @@ const filteredItems = computed(() => {
 function getImagePath(fileName: string): string {
   return `/images/${fileName}`;
 }
+
+const isOpen = ref(false);
 </script>
 
 <template>
@@ -118,9 +122,46 @@ function getImagePath(fileName: string): string {
           <img :src="getImagePath(item.image)" alt="Bild zu {{ item.text }}" class="w-full h-40 object-cover rounded-md mb-4" />
           <p class="font-semibold text-lg">{{ item.year }}</p>
           <p class="flex-grow">{{ item.text }}</p>
-          <button v-if="item.readMore" class="text-accent underline mt-2 self-start">Mehr lesen</button>
+          <button v-if="item.readMore" class="text-accent underline mt-2 self-start" @click="isOpen = true">Mehr lesen</button>
         </li>
       </ul>
     </div>
+    <!-- Read more modal -->
+    <teleport to="#modal-target">
+      <transition name="circle">
+        <div v-if="isOpen" class="absolute inset-0 bg-accent flex items-center justify-center z-50">
+          <div>
+            <h2>Modal</h2>
+            <p>Some text</p>
+            <button @click="isOpen = false">Close</button>
+          </div>
+        </div>
+      </transition>
+    </teleport>
   </div>
 </template>
+
+<style scoped>
+.circle-enter-active,
+.circle-leave-active {
+  transition: clip-path 0.4s ease-in-out;
+}
+
+.circle-enter-from {
+  clip-path: circle(0% at 50% 50%);
+  opacity: 0;
+}
+.circle-enter-to {
+  clip-path: circle(150% at 50% 50%);
+  opacity: 1;
+}
+
+.circle-leave-from {
+  clip-path: circle(150% at 50% 50%);
+  opacity: 1;
+}
+.circle-leave-to {
+  clip-path: circle(0% at 50% 50%);
+  opacity: 0 ease-out;
+}
+</style>
