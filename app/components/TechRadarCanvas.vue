@@ -4,8 +4,9 @@ import * as d3 from 'd3';
 import { radarData } from '@/utils/radarData';
 
 const svgRef = ref<SVGSVGElement | null>(null);
-const width = 600;
-const height = 600;
+const containerRef = ref<HTMLElement | null>(null);
+const width = ref(0);
+const height = ref(0);
 const rings = ['Adopt', 'Trial', 'Hold'];
 const quadrantColors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728'];
 
@@ -58,11 +59,23 @@ function hoveredId(label: string): boolean {
 }
 
 onMounted(() => {
+  // hole die Größe vom Container
+  const container = document.getElementById('modal-target');
+  if (container) {
+    width.value = container.clientWidth;
+    height.value = container.clientHeight;
+  }
+
+  drawRadar();
+});
+
+function drawRadar() {
+  if (!svgRef.value) return;
   const svg = d3.select(svgRef.value!);
   svg.selectAll('*').remove();
 
-  const radius = Math.min(width, height) / 2 - 50;
-  const center = { x: width / 2, y: height / 2 };
+  const radius = Math.min(width.value, height.value) * 0.45; // 0.45 wegen Padding/Rand
+  const center = { x: width.value / 2, y: height.value / 2 };
   const ringStep = radius / rings.length;
   const angleStep = (Math.PI * 2) / 4;
 
@@ -135,12 +148,12 @@ onMounted(() => {
   });
 
   points.value = tempPoints;
-});
+}
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-4" style="position: relative; width: 600px; height: 600px">
-    <svg ref="svgRef" :width="width" :height="height" class="rounded-xl border border-white/30 bg-white/5 backdrop-blur-md"></svg>
+  <div class="flex flex-row gap-4">
+    <svg ref="svgRef" :width="width" :height="height" class="border border-white/30 bg-white/5 backdrop-blur-md"></svg>
     <!-- Tooltip als HTML Overlay -->
     <div
       v-if="state.hoveredId !== null"

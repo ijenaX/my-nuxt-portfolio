@@ -65,7 +65,7 @@ export const radarData: RadarQuadrant[] = [
     ],
   },
   {
-    name: 'Infrastruktur',
+    name: 'Infrastructure',
     rings: [
       {
         name: 'Adopt',
