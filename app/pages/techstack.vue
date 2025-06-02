@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TechRadarCanvas from '@/components/TechRadarCanvas.vue';
+</script>
 
 <template>
-  <main></main>
+  <TechRadarCanvas />
 </template>

@@ -1,76 +1,74 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import CvModalContent from '~/components/CvModalContent.vue';
 
 interface TimelineItem {
-  year: number;
+  year: string;
   type: string;
-  image: string;
+  image: string[];
   text: string;
+  modalText: string;
+  technologies?: string[];
   readMore: boolean;
 }
 
 const items: TimelineItem[] = [
   {
-    year: 2025,
-    type: 'none',
-    image: 'present1_psd.jpg',
-    text: '???',
-    readMore: false,
-  },
-  {
-    year: 2025,
+    year: '04/2025',
     type: 'certificate',
-    image: 'present1_psd.jpg',
+    image: ['present1_psd.jpg'],
     text: 'AZ-900 Azure Fundamentals',
+    modalText: '',
     readMore: false,
   },
   {
-    year: 2023,
+    year: '09/2023 - heute',
     type: 'professional',
-    image: 'pexels-photo-70912.jpeg',
-    text: 'Berufseinstieg bei der MVI Solve-It als Junior Softwareenwickler',
+    image: ['pexels-photo-70912.jpeg'],
+    text: 'Junior Softwareenwickler bei der MVI Solve-It',
+    modalText:
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+    technologies: ['Angular', 'Azure', 'Docker', 'Java', 'Kubernetes', 'Terraform', 'Typescript', 'Postgresql'],
     readMore: true,
   },
   {
-    year: 2023,
+    year: '05/2023 - 07/2023',
     type: 'professional',
-    image: 'openknowledge-kennedy-tower.jpg',
-    text: 'Berufseinstieg bei der open knowledge GmbH als Enterprise Developer',
-    readMore: true,
-  },
-  {
-    year: 2023,
-    type: 'education',
-    image: 'free-birds.jpeg',
-    text: 'Abschluss des Studiums Medieninformatik B-Sc. mit der Note 2,4',
+    image: ['openknowledge-kennedy-tower.jpg'],
+    text: 'Enterprise Developer bei der open knowledge GmbH',
+    modalText: 'testtext',
     readMore: false,
   },
   {
-    year: 2022,
+    year: '08/2022 - 04/2023',
     type: 'education',
-    image: 'openknowledge-kennedy-tower.jpg',
-    text: 'Start des Praxissemesters bei open knowledge GmbH',
+    image: ['openknowledge-kennedy-tower.jpg'],
+    text: 'Praxissemester bei open knowledge GmbH',
+    modalText: 'testtext',
     readMore: true,
   },
   {
-    year: 2017,
-    type: 'none',
-    image: 'whs-gelsenkirchen.jpg',
-    text: 'Beginn des Studiums Medieninformatik an der Westfälischen Hochschule Gelsenkirchen',
+    year: '10/2017 - 04/2023',
+    type: 'education',
+    image: ['free-birds.jpeg'],
+    text: 'Studium Medieninformatik B-Sc.',
+    modalText: 'testtext',
     readMore: true,
   },
   {
-    year: 2017,
+    year: '02/2017',
     type: 'education',
-    image: 'printer.jpeg',
+    image: ['printer.jpeg'],
     text: 'Praktikum in der Lithografie Staudt',
+    modalText: 'testtext',
     readMore: true,
   },
   {
-    year: 2016,
+    year: '09/2008 - 04/2016',
     type: 'education',
-    image: 'abitur.jpeg',
-    text: 'Abitur mit der Abschlussnote 2,4',
+    image: ['abitur.jpeg'],
+    text: 'Schulzeit am Hellweg Gymnasium',
+    modalText: 'testtext',
     readMore: false,
   },
 ];
@@ -92,10 +90,16 @@ const filteredItems = computed(() => {
 });
 
 function getImagePath(fileName: string): string {
-  return `/images/${fileName}`;
+  return fileName ? `/images/${fileName}` : '';
 }
 
 const isOpen = ref(false);
+const selectedItem = ref<TimelineItem | null>(null);
+
+function openModal(item: TimelineItem) {
+  selectedItem.value = item;
+  isOpen.value = true;
+}
 </script>
 
 <template>
@@ -119,10 +123,10 @@ const isOpen = ref(false);
 
       <ul class="flex flex-wrap gap-6 justify-center">
         <li v-for="item in filteredItems" :key="item.year + item.text" class="flex flex-col w-64 p-4 border rounded-md shadow-sm hover:shadow-md transition">
-          <img :src="getImagePath(item.image)" alt="Bild zu {{ item.text }}" class="w-full h-40 object-cover rounded-md mb-4" />
+          <img :src="getImagePath(item.image[0]!)" alt="Bild zu {{ item.text }}" class="w-full h-40 object-cover rounded-md mb-4" />
           <p class="font-semibold text-lg">{{ item.year }}</p>
           <p class="flex-grow">{{ item.text }}</p>
-          <button v-if="item.readMore" class="text-accent underline mt-2 self-start" @click="isOpen = true">Mehr lesen</button>
+          <button v-if="item.readMore" class="text-accent hover:underline mt-2 self-end" @click="openModal(item)">...Mehr erfahren</button>
         </li>
       </ul>
     </div>
@@ -130,11 +134,14 @@ const isOpen = ref(false);
     <teleport to="#modal-target">
       <transition name="circle">
         <div v-if="isOpen" class="absolute inset-0 bg-accent flex items-center justify-center z-50">
-          <div>
-            <h2>Modal</h2>
-            <p>Some text</p>
-            <button @click="isOpen = false">Close</button>
-          </div>
+          <CvModalContent
+            v-if="selectedItem"
+            :title="`${selectedItem.text}`"
+            :description="selectedItem.modalText"
+            :technologies="selectedItem.technologies"
+            :image="getImagePath(selectedItem.image[1]! ?? selectedItem.image[0])"
+            @close="isOpen = false"
+          />
         </div>
       </transition>
     </teleport>
