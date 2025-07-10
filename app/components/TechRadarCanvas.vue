@@ -4,7 +4,6 @@ import * as d3 from 'd3';
 import { radarData } from '@/utils/radarData';
 
 const svgRef = ref<SVGSVGElement | null>(null);
-const containerRef = ref<HTMLElement | null>(null);
 const width = ref(0);
 const height = ref(0);
 const rings = ['Adopt', 'Trial', 'Hold'];
@@ -83,15 +82,16 @@ function drawRadar() {
   rings.forEach((ring, i) => {
     const r = ringStep * (i + 1);
 
-    svg.append('circle').attr('cx', center.x).attr('cy', center.y).attr('r', r).attr('stroke', '#555').attr('fill', 'none');
+    svg.append('circle').attr('cx', center.x).attr('cy', center.y).attr('r', r).attr('stroke', '#DE2B37').attr('fill', 'none');
 
     svg
       .append('text')
       .attr('x', center.x)
-      .attr('y', center.y - r - 6)
+      .attr('y', center.y - r + 24)
       .attr('text-anchor', 'middle')
       .attr('fill', '#aaa')
-      .style('font-size', '10px')
+      .style('font-size', '18px')
+      .style('font-weight', 'bold')
       .text(ring.toUpperCase());
   });
 
@@ -101,27 +101,37 @@ function drawRadar() {
     const x = center.x + radius * Math.cos(angle);
     const y = center.y + radius * Math.sin(angle);
 
-    svg.append('line').attr('x1', center.x).attr('y1', center.y).attr('x2', x).attr('y2', y).attr('stroke', '#888');
+    svg.append('line').attr('x1', center.x).attr('y1', center.y).attr('x2', x).attr('y2', y).attr('stroke', '#DE2B37');
   }
 
-  // Quadrantnamen
-  radarData.forEach((q, i) => {
-    const angle = (Math.PI / 2) * i + Math.PI / 4;
-    const x = center.x + (radius + 20) * Math.cos(angle);
-    const y = center.y + (radius + 20) * Math.sin(angle);
-
-    svg.append('text').attr('x', x).attr('y', y).attr('text-anchor', 'middle').attr('fill', '#fff').style('font-size', '12px').text(q.name);
-  });
-
-  // Punkte berechnen & zeichnen (ohne Tooltip in D3)
+  // Punkte berechnen & zeichnen
   const tempPoints: typeof points.value = [];
 
-  entries.value.forEach((entry) => {
-    const angle = angleStep * entry.quadrantIndex + (Math.random() * angleStep) / 2;
-    const r = ringStep * (entry.ringIndex + 0.5) * (0.9 + 0.2 * Math.random());
+  const radiusPx = 7;
+  const minDistance = radiusPx * 2 + 1;
 
-    const x = center.x + r * Math.cos(angle);
-    const y = center.y + r * Math.sin(angle);
+  entries.value.forEach((entry) => {
+    let x = 0;
+    let y = 0;
+    let tries = 0;
+    let valid = false;
+
+    while (tries < 100 && !valid) {
+      const angle = angleStep * entry.quadrantIndex + Math.random() * angleStep;
+      const r = ringStep * (entry.ringIndex + 0.5) * (0.8 + 0.35 * Math.random());
+
+      x = center.x + r * Math.cos(angle);
+      y = center.y + r * Math.sin(angle);
+
+      valid = tempPoints.every((p) => {
+        const dx = p.x - x;
+        const dy = p.y - y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        return distance >= minDistance;
+      });
+
+      tries++;
+    }
 
     tempPoints.push({ id: entry.id, x, y, label: entry.label });
 
@@ -131,19 +141,17 @@ function drawRadar() {
       .on('mouseenter', () => (state.hoveredId = entry.id))
       .on('mouseleave', () => (state.hoveredId = null));
 
-    // Kreis
     const fillColor = quadrantColors[entry.quadrantIndex] ?? '#ccc';
-    pointGroup.append('circle').attr('cx', x).attr('cy', y).attr('r', 7).attr('fill', fillColor);
+    pointGroup.append('circle').attr('cx', x).attr('cy', y).attr('r', radiusPx).attr('fill', fillColor);
 
-    // Nummer in Kreis (zentriert, weiß)
     pointGroup
       .append('text')
       .attr('x', x)
-      .attr('y', y + 3) // leicht vertikal zentriert
+      .attr('y', y + 3)
       .attr('text-anchor', 'middle')
-      .attr('fill', '#fff')
+      .attr('fill', '#000')
       .style('font-size', '8px')
-      .style('pointer-events', 'none') // Damit der Text keine Hover-Events blockiert
+      .style('pointer-events', 'none')
       .text(entry.id);
   });
 
@@ -153,7 +161,7 @@ function drawRadar() {
 
 <template>
   <div class="flex flex-row gap-4">
-    <svg ref="svgRef" :width="width" :height="height" class="border border-white/30 bg-white/5 backdrop-blur-md"></svg>
+    <svg ref="svgRef" :width="width" :height="height" class="border border-white/30 bg-white/5"></svg>
     <!-- Tooltip als HTML Overlay -->
     <div
       v-if="state.hoveredId !== null"
@@ -162,7 +170,7 @@ function drawRadar() {
         pointerEvents: 'none',
         top: `${points.find((p) => p.id === state.hoveredId)?.y}px`,
         left: `${points.find((p) => p.id === state.hoveredId)?.x}px`,
-        transform: 'translate(10px, -30px)',
+        transform: 'translate(10px, -10px)',
         backgroundColor: 'rgba(0, 0, 0, 0.8)',
         color: 'white',
         padding: '4px 8px',

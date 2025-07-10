@@ -22,11 +22,11 @@ export const radarData: RadarQuadrant[] = [
       },
       {
         name: 'Trial',
-        entries: [{ label: 'JavaScript' }],
+        entries: [{ label: 'JavaScript' }, { label: 'PHP' }],
       },
       {
         name: 'Hold',
-        entries: [{ label: 'Java' }, { label: 'Python' }, { label: 'Kotlin' }, { label: 'SQLite' }, { label: 'PHP' }],
+        entries: [{ label: 'Java' }, { label: 'Python' }, { label: 'Kotlin' }, { label: 'SQLite' }],
       },
     ],
   },
