@@ -103,11 +103,11 @@ function openModal(item: TimelineItem) {
 </script>
 
 <template>
-  <div class="container mx-auto px-4">
-    <h1 class="text-center font-AvaFont text-4xl my-4 text-accent">Lebenslauf</h1>
+  <div class="container mx-auto px-4 pt-20">
+    <h1 class="text-center">Lebenslauf</h1>
     <p class="text-center mx-auto max-w-3xl pb-10">
       Entdecke die Projekte an denen ich im professionellen Umfeld gearbeitet habe, meine Ausbildung und praktische Erfahrung, sowie Zertifikate. Jede Karte war ein Meilenstein auf meinem Weg zum
-      Full-Stack Entwickler.
+      Software Entwickler.
     </p>
 
     <!-- Tabs -->

@@ -20,6 +20,7 @@ export default {
       fontFamily: {
         Montserrat: 'Montserrat, sans-serif',
         AvaFont: 'AvaFont',
+        EmpiricRoman: 'EmpiricRoman',
       },
       container: {
         center: true,

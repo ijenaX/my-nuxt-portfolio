@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['@/assets/css/fonts.css'],
+  css: ['@/assets/css/global.css'],
 
   typescript: {
     tsConfig: {

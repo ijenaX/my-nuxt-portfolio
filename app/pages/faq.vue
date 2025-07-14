@@ -2,8 +2,8 @@
 
 <template>
   <main>
-    <section class="container pt-20">
-      <h1>Kontakt</h1>
+    <section class="container py-20">
+      <h1>FAQ</h1>
     </section>
   </main>
 </template>
