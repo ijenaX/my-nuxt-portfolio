@@ -103,16 +103,16 @@ function openModal(item: TimelineItem) {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 pt-20">
+  <div class="container mx-auto px-4 py-16 max-w-3xl">
     <h1 class="text-center">Lebenslauf</h1>
-    <p class="text-center mx-auto max-w-3xl pb-10">
-      Entdecke die Projekte an denen ich im professionellen Umfeld gearbeitet habe, meine Ausbildung und praktische Erfahrung, sowie Zertifikate. Jede Karte war ein Meilenstein auf meinem Weg zum
-      Software Entwickler.
+    <p class="text-center mx-auto max-w-3xl pb-10 text-lg leading-relaxed">
+      Entdecke die Projekte an denen ich im professionellen Umfeld gearbeitet habe, meine Ausbildung und praktische Erfahrung, sowie Zertifikate. Jede Karte war ein Meilenstein auf meinem Weg zum Full
+      Stack Entwickler.
     </p>
 
     <!-- Tabs -->
-    <ul class="flex justify-center gap-8 mb-6 text-lg font-semibold cursor-pointer select-none">
-      <li v-for="tab in tabs" :key="tab" :class="[activeTab === tab ? 'border-b-4 border-accent text-accent' : 'text-secondary hover:text-accent']" class="pb-2" @click="activeTab = tab">
+    <ul class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-6 text-lg font-semibold cursor-pointer select-none text-center">
+      <li v-for="tab in tabs" :key="tab" :class="[activeTab === tab ? 'border-b-4 border-accent text-accent' : 'text-gray-300 hover:text-accent', 'pb-2']" @click="activeTab = tab">
         {{ tab }}
       </li>
     </ul>
@@ -122,7 +122,7 @@ function openModal(item: TimelineItem) {
       <div v-if="filteredItems.length === 0" class="text-center text-secondary italic">Für den Tab "{{ activeTab }}" sind aktuell keine Einträge vorhanden.</div>
 
       <ul class="flex flex-wrap gap-6 justify-center">
-        <li v-for="item in filteredItems" :key="item.year + item.text" class="flex flex-col w-64 p-4 border rounded-md shadow-sm hover:shadow-md transition">
+        <li v-for="item in filteredItems" :key="item.year + item.text" class="flex flex-col w-64 p-4 border backdrop-blur-sm rounded-md shadow-sm hover:shadow-md transition">
           <img :src="getImagePath(item.image[0]!)" alt="Bild zu {{ item.text }}" class="w-full h-40 object-cover rounded-md mb-4" />
           <p class="font-semibold text-lg">{{ item.year }}</p>
           <p class="flex-grow">{{ item.text }}</p>

@@ -15,7 +15,7 @@ const toggleMenu = () => {
         <NuxtLink to="/home">
           <NuxtImg width="208" densities="x1" src="/Lockup-Dark-Background.png" format="webp" alt="" />
         </NuxtLink>
-        <p class="mt-2 text-sm">Full Stack Developer</p>
+        <p class="mt-2 text-sm">Full Stack Entwickler</p>
       </div>
 
       <!-- Desktop Version -->
