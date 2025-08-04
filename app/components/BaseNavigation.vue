@@ -20,8 +20,8 @@ const toggleMenu = () => {
 
       <!-- Desktop Version -->
       <ul class="hidden md:flex gap-6 text-xl capitalize">
+        <li><NuxtLink to="/home" class="hover:text-accent">Home</NuxtLink></li>
         <li><NuxtLink to="/techstack" class="hover:text-accent">Tech Stack</NuxtLink></li>
-        <li><NuxtLink to="/projects" class="hover:text-accent">Projekte</NuxtLink></li>
         <li><NuxtLink to="/cv" class="hover:text-accent">Lebenslauf</NuxtLink></li>
         <li><NuxtLink to="/faq" class="hover:text-accent">FAQ</NuxtLink></li>
         <li><NuxtLink to="/contact" class="hover:text-accent">Kontakt</NuxtLink></li>
