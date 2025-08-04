@@ -162,7 +162,6 @@ function drawRadar() {
 <template>
   <div class="flex flex-row gap-4">
     <svg ref="svgRef" :width="width" :height="height" class="border border-white/30 bg-white/5"></svg>
-    <!-- Tooltip als HTML Overlay -->
     <div
       v-if="state.hoveredId !== null"
       :style="{

@@ -21,6 +21,8 @@ export default {
         Montserrat: 'Montserrat, sans-serif',
         AvaFont: 'AvaFont',
         EmpiricRoman: 'EmpiricRoman',
+        CinzelRegular: 'CinzelRegular',
+        CinzelBold: 'CinzelBold',
       },
       container: {
         center: true,

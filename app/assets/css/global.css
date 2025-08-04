@@ -12,8 +12,18 @@
   src: url('/EmpiricRoman.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'CinzelRegular';
+  src: url('/CinzelRegular-3jEM.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'CinzelBold';
+  src: url('/CinzelBold-ZZ3Z.ttf') format('truetype');
+}
+
 @layer base {
   h1 {
-    @apply font-EmpiricRoman font-bold text-5xl mb-8 text-accent;
+    @apply font-CinzelRegular font-bold text-5xl mb-8 text-accent;
   }
 }
