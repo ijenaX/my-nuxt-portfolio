@@ -3,23 +3,13 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'AvaFont';
-  src: url('/Ava-zrRWG.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'EmpiricRoman';
-  src: url('/EmpiricRoman.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'CinzelRegular';
-  src: url('/CinzelRegular-3jEM.ttf') format('truetype');
+  src: url('/fonts/CinzelRegular-3jEM.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'CinzelBold';
-  src: url('/CinzelBold-ZZ3Z.ttf') format('truetype');
+  src: url('/fonts/CinzelBold-ZZ3Z.ttf') format('truetype');
 }
 
 @layer base {

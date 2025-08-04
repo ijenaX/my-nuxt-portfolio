@@ -13,7 +13,7 @@ const toggleMenu = () => {
     <nav class="w-full px-8 flex items-center justify-between fixed z-50 text-white">
       <div class="flex flex-col">
         <NuxtLink to="/home">
-          <NuxtImg width="208" densities="x1" src="/Lockup-Dark-Background.png" format="webp" alt="" />
+          <NuxtImg width="208" densities="x1" src="/logo/Lockup-Dark-Background.png" format="webp" alt="" />
         </NuxtLink>
         <p class="mt-2 text-sm">Full Stack Entwickler</p>
       </div>

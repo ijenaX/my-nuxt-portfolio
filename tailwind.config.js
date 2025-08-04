@@ -19,8 +19,6 @@ export default {
       },
       fontFamily: {
         Montserrat: 'Montserrat, sans-serif',
-        AvaFont: 'AvaFont',
-        EmpiricRoman: 'EmpiricRoman',
         CinzelRegular: 'CinzelRegular',
         CinzelBold: 'CinzelBold',
       },

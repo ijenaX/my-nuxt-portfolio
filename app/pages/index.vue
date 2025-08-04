@@ -12,7 +12,7 @@ definePageMeta({
     </div>
     <a href="/home" class="text-white hover:text-white hover:border-accent border border-white hover:bg-accent font-bold text-lg px-5 py-2.5 text-center transition">
       <span class="h-full flex items-center justify-center">
-        <img class="w-5 hover:opacity-80 transition-opacity duration-200 mr-2" src="/Icon-Color.png" />
+        <img class="w-5 hover:opacity-80 transition-opacity duration-200 mr-2" src="/logo/Icon-Color.png" />
         <p>Öffnen</p>
       </span>
     </a>
