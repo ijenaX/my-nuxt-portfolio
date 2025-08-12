@@ -35,8 +35,8 @@ const toggleMenu = () => {
 
     <transition name="fade">
       <div v-if="isMenuOpen" class="fixed top-0 left-0 w-full h-screen bg-black/90 text-white flex flex-col items-center justify-center gap-6 text-2xl z-40">
+        <NuxtLink to="/home" @click="toggleMenu">Home</NuxtLink>
         <NuxtLink to="/techstack" @click="toggleMenu">Tech Stack</NuxtLink>
-        <NuxtLink to="/projects" @click="toggleMenu">Projekte</NuxtLink>
         <NuxtLink to="/cv" @click="toggleMenu">Lebenslauf</NuxtLink>
         <NuxtLink to="/faq" @click="toggleMenu">FAQ</NuxtLink>
         <NuxtLink to="/contact" @click="toggleMenu">Kontakt</NuxtLink>
