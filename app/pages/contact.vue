@@ -13,7 +13,7 @@
         <Icon name="mdi-email" class="h-6 w-6 text-accent flex-shrink-0" />
         <span>
           <strong>E-Mail: </strong>
-          <a href="mailto:svenja@example.com" class="underline hover:text-accent transition">svenja@example.com</a>
+          <a href="mailto:svenja@example.com" class="underline hover:text-accent transition">svenja.galla@protonmail.com</a>
         </span>
       </li>
 
