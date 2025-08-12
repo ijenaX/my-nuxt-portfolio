@@ -27,7 +27,7 @@
 
       <li class="flex items-center space-x-4 text-lg">
         <Icon name="mdi-calendar-check" class="h-6 w-6 text-accent flex-shrink-0" />
-        <span> <strong>Verfügbarkeit:</strong> Ab September 2025 </span>
+        <span> <strong>Verfügbarkeit:</strong> Ab Oktober 2025 </span>
       </li>
     </ul>
   </section>
