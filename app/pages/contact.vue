@@ -11,9 +11,9 @@
     <ul class="mx-auto max-w-md space-y-6 border p-8 rounded-md backdrop-blur-sm">
       <li class="flex items-center space-x-4 text-lg">
         <Icon name="mdi-email" class="h-6 w-6 text-accent flex-shrink-0" />
-        <span>
+        <span class="break-words">
           <strong>E-Mail: </strong>
-          <a href="mailto:svenja.galla@protonmail.com" class="underline hover:text-accent transition">svenja.galla@protonmail.com</a>
+          <a href="mailto:svenja.galla@protonmail.com" class="underline hover:text-accent transition break-all">svenja.galla@protonmail.com</a>
         </span>
       </li>
 
