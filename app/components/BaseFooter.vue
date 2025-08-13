@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
     <div class="mx-8 flex justify-between items-center">
       <!-- Text links -->
       <div>
-        <p class="text-xs">© {{ year }} – Alle Rechte vorbehalten</p>
+        <p class="text-xs">© {{ year }} - Alle Rechte vorbehalten</p>
       </div>
 
       <!-- Icons rechts -->

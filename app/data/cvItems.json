@@ -1,0 +1,69 @@
+[
+  {
+    "id": "az900",
+    "year": "04/2025",
+    "type": "certificate",
+    "image": ["engin-akyurt-A9_IsUtjHm4-unsplash.jpg"],
+    "text": "AZ-900 Azure Fundamentals",
+    "modalText": "",
+    "readMore": false
+  },
+  {
+    "id": "mvi-professional",
+    "year": "09/2023 - heute",
+    "type": "professional",
+    "image": ["pexels-photo-70912.jpeg"],
+    "text": "Junior Software-Enwickler, MVI Group GmbH",
+    "modalText": "Während meiner Tätigkeit bei MVI Group GmbH arbeitete ich an verschiedenen Projekten im Bereich Cloud & Webentwicklung. Innerhalb eines agilen Teams, war ich bisher beteiligt an der Implementierung von Microservices, CI/CD-Pipelines und der Optimierung von Cloud-Infrastrukturen. Mein Schwerpunkt dabei lag allerdings auf der Weiterentwicklung eines Angular Frontends welches als Kundenanwendung genutzt wird. Als Nebenprojekt innerhalb der Firma war ich zudem an der Planung und Umsetzung eines Chatbots beteiligt. Mein Fokus lag hier auf dem Aufbau der Infrastruktur in Azure und der Entwicklung einer Angular Web-Component.",
+    "technologies": ["Angular", "Azure", "Docker", "Java", "Kubernetes", "Terraform", "typescript", "Postgresql"],
+    "readMore": true
+  },
+  {
+    "id": "openknowledge-professional",
+    "year": "05/2023 - 07/2023",
+    "type": "professional",
+    "image": ["openknowledge-kennedy-tower.jpg"],
+    "text": "Enterprise Developer, open knowledge GmbH",
+    "modalText": "Während meiner Zeit als Praktikant und Festangestellter bei der open knowledge GmbH, habe ich eigenständig an der Entwicklung eines internen Full-Stack Projektes gearbeitet. Es ging darum backend-seitig eine Architektur im Spring Boot Framework nach dem Domain Driven Design Standard (DDD) zu entwickeln, sowie eine REST-API und das Frontend in Angular zu implementieren. Dazu gehörten auch Unit Tests.",
+    "technologies": ["Angular", "Java", "Spring Boot", "typescript", "DDD", "REST"],
+    "readMore": true
+  },
+  {
+    "id": "openknowledge-internship",
+    "year": "08/2022 - 04/2023",
+    "type": "education",
+    "image": ["openknowledge-kennedy-tower.jpg"],
+    "text": "Praxissemester bei open knowledge GmbH",
+    "modalText": "Während meiner Zeit als Praktikant und Festangestellter bei der open knowledge GmbH, habe ich eigenständig an der Entwicklung eines internen Full-Stack Projektes gearbeitet. Es ging darum backend-seitig eine Architektur im Spring Boot Framework nach dem Domain Driven Design Standard (DDD) zu entwickeln, sowie eine REST-API und das Frontend in Angular zu implementieren. Dazu gehörten auch Unit Tests.",
+    "technologies": ["Angular", "Java", "Spring Boot", "typescript", "DDD", "REST", "Github Actions"],
+    "readMore": true
+  },
+  {
+    "id": "whs-study",
+    "year": "10/2017 - 04/2023",
+    "type": "education",
+    "image": ["pexels-luis-gomes-166706-546819.jpg"],
+    "text": "Studium Medieninformatik B-Sc., WHS Gelsenkirchen",
+    "modalText": "Während meines Studiums habe ich fundierte Kenntnisse in den Bereichen Softwareentwicklung, Webtechnologien, UX/UI-Design und Medientechnik erworben. Zu meinen Schwerpunkten zählten Frontend- und Backend-Programmierung, Datenbanken, sowie visuelle Kommunikation. Im Rahmen eines Softwareprojekts wurde eine umfassende Anwendung zur Verarbeitung und Bearbeitung von Audiosignalen in einem interdisziplinären Team entwickelt. Das Thema meiner Bachelorarbeit hingegen drehte sich um Design Systeme und wie sie als Schnittstelle zwischen Entwicklern und Designern dienen können. Dafür interviewte ich u.a. verschiedene Entwickler und Designer im professionellen Umfeld.",
+    "readMore": true
+  },
+  {
+    "id": "lithografy-internship",
+    "year": "02/2017",
+    "type": "education",
+    "image": ["printer.jpeg"],
+    "text": "Praktikum, Lithografie Staudt GmbH",
+    "modalText": "Während meines Praktikums in einer Lithografie erhielt ich spannende Einblicke in den Produktionsprozess der Druckvorstufe und praktische Erfahrungen in der Erstellung von Printmedien.",
+    "technologies": ["Adobe Photoshop", "Adobe Indesign", "Komposition", "Farblehre"],
+    "readMore": true
+  },
+  {
+    "id": "school",
+    "year": "09/2008 - 04/2016",
+    "type": "education",
+    "image": ["abitur.jpeg"],
+    "text": "Schulzeit am Hellweg Gymnasium",
+    "modalText": "",
+    "readMore": false
+  }
+]
