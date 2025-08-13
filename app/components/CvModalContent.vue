@@ -23,12 +23,13 @@ const emit = defineEmits(['close']);
       </button>
     </header>
     <div class="flex flex-row flex-1 justify-center">
-      <!-- <div v-if="image" class="mb-6 flex justify-end">
-        <NuxtImg :src="image" alt="Modal Bild" class="rounded-lg shadow-lg object-cover w-full sm:w-auto" />
-      </div> -->
-      <section class="mb-6 px-2 sm:text-left">
-        <h1 class="text-2xl font-bold text-center px-12 py-6 bg-stone-900 text-highlight">{{ title }}</h1>
-        <p class="text-base p-12 text-center leading-relaxed max-w-prose mx-auto sm:mx-0 border border-stone-900">{{ description }}</p>
+      <section class="mb-6 px-2 sm:text-left max-w-prose w-full mx-auto break-words">
+        <h2 class="text-xl sm:text-2xl font-bold text-center px-4 sm:px-12 py-4 sm:py-6 bg-stone-900 text-highlight w-full">
+          {{ title }}
+        </h2>
+        <p class="text-sm sm:text-base px-4 sm:px-12 py-6 sm:py-12 text-center leading-relaxed border border-stone-900">
+          {{ description }}
+        </p>
       </section>
     </div>
     <div v-if="technologies?.length" class="mt-4">

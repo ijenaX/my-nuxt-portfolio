@@ -14,6 +14,6 @@
 
 @layer base {
   h1 {
-    @apply font-CinzelRegular font-bold text-5xl mb-8 text-accent;
+    @apply font-CinzelRegular font-bold text-4xl sm:text-5xl mb-8 text-accent;
   }
 }
